@@ -16,7 +16,174 @@
             <h5>Link to Photo Image (Required)</h5>
             <input type = "text" id = "photo" class = "form-control" required>
             <hr>
+            <h3>Question 1</h3>
+            <h5>Your mind is always bussing with unexplored ideas and plans.</h5>
+            <select class = "form-control" id ="fq1">
+                <option value="" selected disabled>Please select</option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+            <h3>Question 2</h3>
+            <h5>Generally speaking, you rely more on your experience than your imagination.
+                </h5>
+            <select class = "form-control" id ="fq2">
+                <option value="" selected disabled>Please select</option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+            <h3>Question 3</h3>
+            <h5>You find it easy to stay relaxed and focused even when there is some pressure.</h5>
+            <select class = "form-control" id ="fq3">
+                <option value="" selected disabled>Please select</option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+            <h3>Question 4</h3>
+            <h5>You rarely do something just out of sheer curiosity.</h5>
+            <select class = "form-control" id ="fq4">
+                <option value="" selected disabled>Please select</option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+            <h3>Question 5</h3>
+            <h5>People can rarely upset you.</h5>
+            <select class = "form-control" id ="fq5">
+                <option value="" selected disabled>Please select</option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+            <h3>Question 6</h3>
+            <h5>It is often difficult for you to relate to other people’s feelings.</h5>
+            <select class = "form-control" id ="fq6">
+                <option value="" selected disabled>Please select</option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+            <h3>Question 7</h3>
+            <h5>In a discussion, truth should be more important than people’s sensitivities.</h5>
+            <select class = "form-control" id ="fq7">
+                <option value="" selected disabled>Please select</option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+            <h3>Question 8</h3>
+            <h5>You rarely get carried away by fantasies and ideas.</h5>
+            <select class = "form-control" id ="fq8">
+                <option value="" selected disabled>Please select</option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+            <h3>Question 9</h3>
+            <h5>You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</h5>
+            <select class = "form-control" id ="fq9">
+                <option value="" selected disabled>Please select</option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <h3>Question 10</h3>
+            <h5>You feel more energetic after spending time with a group of people.</h5>
+            <select class = "form-control" id ="fq10">
+                <option value="" selected disabled>Please select</option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
+            </select>
+            <br>
+            <button type = "submit" class = "btn btn-primary btn-lg btn-block" id = "submit">
+                Submit
+            </button>
+            
         </div>
+        <div class = "footer">
+            <div class = "container">
+                <br>
+                <hr>
+                
+                <p>
+                    <a href = "/api/friends">API Friends List</a>  | 
+                    <a href = "https://github.com/xpetrus/FriendFinder">Github Repo</a>
+                </p>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+        $("#submit").on("click", function(event){
+            event.preventDefault();
+            console.log("clicked");
+
+            function validateForm(){
+                var isValid = true;
+                $(".form-control").each(function(){
+                    if($(this).val()===""){
+                        isValid = false;
+                    }
+                });
+                return isValid;
+            }
+            if(validateForm()){
+                var userData = {
+                    name: $("name").val(),
+                    photo: $("photo").val(),
+                    scores: [
+                        $("#fq1").val(),
+                        $("#fq2").val(),
+                        $("#fq3").val(),
+                        $("#fq4").val(),
+                        $("#fq5").val(),
+                        $("#fq6").val(),
+                        $("#fq7").val(),
+                        $("#fq8").val(),
+                        $("#fq9").val(),
+                        $("#fq10").val(),
+                    ]
+                };
+                
+
+                for(var i = 0; i < userData.scores.length; i++){
+                    
+                    console.log(userData.scores[i]);
+                }
+                
+                
+            }
+            else{
+                alert("Please fill out all fields before submitting!");
+            }
+            
+        })
+
+        </script>
+
+
     </body>
 
 
