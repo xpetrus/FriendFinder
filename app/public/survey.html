@@ -2,9 +2,9 @@
     <head>
             <title>Friend Finder Express</title>
             <meta charset = "UTF-8">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-            <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
             <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     </head>
     <body>
@@ -136,13 +136,13 @@
             
         </div>
 
-        <div id = "results" class = "modal fade" role = "dialog" tabindex="2" aria-hidden="true">
-                <div class = "modal-dialog" role = "document">
+        <div id = "results" class = "modal fade" role = "dialog">
+                <div class = "modal-dialog">
                     <div class="modal-content">
                         <div class = "modal-header">
                             <button type = "button" class = "close" data-dismiss ="modal">x</button>
-                            <h2>
-                                <strong>You are compatible with:  </strong>
+                            <h2 class = "modal-title">
+                                You are compatible with:  
                             </h2>
                         </div>
                         <div class = "modal-body">
@@ -198,6 +198,8 @@
                 $.post("/api/friends", userData, function(data){
                     $("#match-name").text(data.name);
                     $("#match-photo").attr("src", data.photo);
+                    $("#match-photo").attr("height", 150);
+                    $("#match-photo").attr("width", 150);
 
                     $("#results").modal("toggle");
 
